@@ -38,21 +38,21 @@ h2{font-size:32px;letter-spacing:-.02em;margin-bottom:6px}
 .open{margin-top:12px;font-size:14.5px;line-height:1.4;color:var(--soft)}
 .open b{color:var(--blue)}
 .resume{margin-top:10px;font-weight:700;font-size:15px}
-.thumbs{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.thumbs{display:flex;flex-direction:column;gap:12px;margin:4px auto 0;width:90%}
 .t{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:14px;padding:10px}
 .t img{width:132px;height:74px;object-fit:cover;border-radius:8px;flex:none;background:#fff}
 .t div{font-size:16px;font-weight:600;line-height:1.25}
 .t small{display:block;font-weight:400;font-size:12.5px;color:var(--soft);margin-top:3px}
 .more{text-align:center;margin-top:16px;font-size:14.5px;line-height:1.45;color:var(--soft)}
 .more a,.pf{color:var(--blue);font-weight:600}
-.pubs{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.pubs{display:flex;flex-direction:column;gap:12px;margin:6px auto 0;width:90%}
 .pub{display:block;background:var(--card);border-radius:14px;padding:14px 16px;color:#fff;text-decoration:none;font-weight:600;font-size:16px;line-height:1.3}
 .pub small{display:block;font-weight:400;font-size:12.5px;color:var(--blue);margin-top:5px}
 .s5{justify-content:flex-end;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 40px)}
 .s5 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%;z-index:-2}
 .s5 .dim{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(5,13,29,.94) 20%,rgba(5,13,29,.55) 100%)}
-.btns{display:flex;flex-direction:column;gap:10px;margin:8px 0 18px}
-.btn{display:block;text-align:center;padding:14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;font-weight:600;font-size:16px;backdrop-filter:blur(6px)}
+.btns{display:flex;flex-direction:column;gap:10px;margin:8px auto 18px;width:90%}
+.btn{display:block;text-align:center;padding:11px 14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;font-weight:600;font-size:16px;backdrop-filter:blur(6px)}
 .btn:first-child{background:var(--blue);border-color:var(--blue);color:#06122a}
 .s5 p{text-align:center;font-size:15.5px;line-height:1.45;color:#dbe6f7}
 .zone{position:absolute;z-index:4;top:0;bottom:0}
@@ -76,15 +76,15 @@ a:focus-visible{outline:3px solid #fff;outline-offset:2px}
     <h2>About me</h2>
     <div class="rows">
       <div class="row"><span class="e">🎓</span><span><b class="k">Kellogg MBA</b> (Marketing, Strategy, Economics)</span></div>
-      <div class="row"><span class="e">💼</span><span>Former <b class="m">McKinsey</b> Growth, Marketing and Sales Strategies and Implementation Consultant</span></div>
-      <div class="row"><span class="e">📈</span><span>Former <b class="p">P&amp;G</b> Senior Growth Analyst and Account Executive across Beauty Category (Hair, Skin, and Personal Care)</span></div>
-      <div class="row"><span class="e">🌎</span><span>Professional tourist</span></div>
+      <div class="row"><span class="e">💼</span><span>Former <b class="m">McKinsey</b> Growth, Marketing and Sales Strategy and Implementation Consultant</span></div>
+      <div class="row"><span class="e">📈</span><span>Former <b class="p">P&amp;G</b> Senior Growth Analyst and Account Executive across Beauty Sector (Hair, Skin, and Personal Care)</span></div>
+      <div class="row"><span class="e">🌍</span><span>Professional tourist</span></div>
     </div>
   </section>
 
   <section class="slide s2" data-dur="11000">
     <h2>Career overview</h2>
-    <p class="lead">Strategy and operations leader with 7+ years driving revenue growth, commercial strategy, and marketing transformation across B2B and B2C.</p>
+    <p class="lead">Strategy and operations leader with 7+ years driving revenue growth by formulating innovative commercial strategies and implementing effective transformations.</p>
     <ul class="hl">
       <li>Uncovered $30M+ in efficiencies across $3bn+ of marketing budgets at McKinsey</li>
       <li>Partnered on a $100M+ growth and $300M+ savings transformation for a global recreation and entertainment brand</li>
@@ -137,6 +137,7 @@ a:focus-visible{outline:3px solid #fff;outline-offset:2px}
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var barsEl=document.getElementById('bars');
   var idx=0,elapsed=0,last=0,paused=false,holdTimer=null,held=false;
+  var story=document.getElementById('story');
   var fills=slides.map(function(){var b=document.createElement('div');b.className='bar';var f=document.createElement('i');b.appendChild(f);barsEl.appendChild(b);return f;});
   function dur(){return +slides[idx].getAttribute('data-dur')||6000;}
   function show(n){
@@ -153,7 +154,6 @@ a:focus-visible{outline:3px solid #fff;outline-offset:2px}
     else if(!paused){elapsed+=dt;fills[idx].style.width=Math.min(100,elapsed/dur()*100)+'%';if(elapsed>=dur())next();}
     requestAnimationFrame(tick);
   }
-  var story=document.getElementById('story');
   story.addEventListener('pointerdown',function(e){
     if(e.target.closest('a'))return;
     held=false;holdTimer=setTimeout(function(){paused=true;held=true;},200);
